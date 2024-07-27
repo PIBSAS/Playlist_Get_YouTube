@@ -18,5 +18,5 @@ def descargar_audio(playlist_url):
         ydl.download([playlist_url])
 
 if __name__ == "__main__":
-    playlist_url = input("Introduce la URL de la playlist de YouTube: ")
+    playlist_url = input("Introduce la URL de la playlist o Mix de YouTube: ")
     descargar_audio(playlist_url)
