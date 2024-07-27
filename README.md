@@ -1,4 +1,4 @@
-# Playlist_Get_YouTube
+# Playlist o Mix YouTube
 
 - ```wsl --install debian```
 - ```sudo apt update && sudo apt upgrade -y```
