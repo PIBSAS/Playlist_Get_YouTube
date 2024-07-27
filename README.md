@@ -9,7 +9,14 @@
 - ```pip install yt-dlp```
 - ```git clone https://github.com/PIBSAS/Playlist_Get_YouTube.git```
 - ```cd Pl*be```
+# Para Audio:
 ## Run:
-- ```python3 script.py```
+- ```python3 audio_yt_dlp.py```
+- Paste Url playliist or mix then hit enter
+  👍👍👍👍
+
+# Para Video:
+## Run:
+- ```python3 video_yt_dlp.py```
 - Paste Url playliist or mix then hit enter
   👍👍👍👍
