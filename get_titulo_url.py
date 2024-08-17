@@ -1,6 +1,7 @@
 import yt_dlp
+import re
 
-def obtener_titulos_y_urls(playlist_url, output_file):
+def obtener_titulos_y_urls(playlist_url):
     ydl_opts = {
         'quiet': True,  # Suprime la salida adicional
         'extract_flat': True,  # Extrae solo la metadata, no descarga los videos
@@ -9,6 +10,15 @@ def obtener_titulos_y_urls(playlist_url, output_file):
     
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         result = ydl.extract_info(playlist_url, download=False)
+        
+        # Obtener el nombre de la playlist
+        playlist_title = result.get('title', 'playlist')
+        
+        # Limpiar el nombre para usarlo como nombre de archivo
+        playlist_title = re.sub(r'[\\/*?:"<>|]', "", playlist_title)
+        
+        # Crear el nombre del archivo con el nombre de la playlist
+        output_file = f"{playlist_title}.txt"
         
         # Asegurarse de que se trata de una playlist
         if 'entries' in result:
@@ -29,5 +39,4 @@ def obtener_titulos_y_urls(playlist_url, output_file):
 
 if __name__ == "__main__":
     playlist_url = input("Introduce la URL de la playlist o Mix de YouTube: ")
-    output_file = "playlist_videos.txt"
-    obtener_titulos_y_urls(playlist_url, output_file)
+    obtener_titulos_y_urls(playlist_url)
