@@ -1,6 +1,17 @@
+import os, subprocess, sys
+
+def is_dependencies_installed():
+    try:
+        subprocess.check_output([sys.executable, "-m", "pip", "show", "beautifulsoup4"])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+if not is_dependencies_installed():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4"])
+
 import requests
 from bs4 import BeautifulSoup
-import os
 
 # Lista de URLs de los sitios web que quieres scrapear
 site_urls = [
