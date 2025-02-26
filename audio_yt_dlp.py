@@ -2,6 +2,18 @@
 ## pip install yt-dlp ##
 ## sudo apt-get install ffmpeg ##
 
+import os, subprocess, sys
+
+def is_dependencies_installed():
+    try:
+        subprocess.check_output([sys.executable, "-m", "pip", "show", "yt_dlp"])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+if not is_dependencies_installed():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "yt_dlp"])
+
 import yt_dlp
 
 def descargar_audio(playlist_url):
