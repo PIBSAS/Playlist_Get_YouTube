@@ -1,19 +1,23 @@
+'''Innecesario, en la actualidad los videos estan alojados en YouTube y unm tube solo hace de man in the middle'''
 import os, subprocess, sys
 
 def is_dependencies_installed():
     try:
         subprocess.check_output([sys.executable, "-m", "pip", "show", "beautifulsoup4"])
+        subprocess.check_output([sys.executable, "-m", "pip", "show", "requests"])
         return True
     except subprocess.CalledProcessError:
         return False
 
 if not is_dependencies_installed():
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "requests"])
 
 import requests
 from bs4 import BeautifulSoup
 
+URL = 'https://unmtube.unm.edu.ar/vEmbed/'
 # Lista de URLs de los sitios web que quieres scrapear
+''' reemplazar por opcion de id en lista ya que la url siempre es la misma
 site_urls = [
     'https://unmtube.unm.edu.ar/vEmbed/2804',
     'https://unmtube.unm.edu.ar/vEmbed/3174',
@@ -24,7 +28,11 @@ site_urls = [
     'https://unmtube.unm.edu.ar/vEmbed/3176',
     'https://unmtube.unm.edu.ar/vEmbed/3215',
     'https://unmtube.unm.edu.ar/vEmbed/3251'
-]
+]'''
+# Lista de identificadores de video
+video_ids = ['74', '75']
+# Lista de URLs completas utilizando la base de URL y los identificadores
+site_urls = [f"{URL}{video_id}" for video_id in video_ids]
 
 def descargar_videos(site_url):
     # Realiza una solicitud HTTP al sitio web
