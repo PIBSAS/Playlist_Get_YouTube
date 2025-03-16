@@ -1,7 +1,7 @@
 # Playlist o Mix YouTube
 
 - ```
-  wsl --install debian
+  wsl --install
   ```
   
 - ```
