@@ -14,7 +14,7 @@ import yt_dlp
 
 def descargar_videos(playlist_url):
     ydl_opts = {
-        'format': 'best[height<=720]',
+        'format': 'bv*+ba/b',
         'outtmpl': '%(title)s.%(ext)s',
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
